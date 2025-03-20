@@ -1,0 +1,133 @@
+/*about.css*/
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #fdf2e9;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ff6f61;
+    padding: 15px 40px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links .active {
+    color: #f3efee;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: #f4f6f6;
+    list-style: none;
+    top: 30px;
+    left: 0;
+    min-width: 100px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+    color: #333;
+}
+
+.dropdown-menu a {
+    color: white;
+}
+/* Hero Section */
+
+.hero {
+    text-align: center;
+    background: url('https://source.unsplash.com/1600x900/?about,food') no-repeat center center/cover;
+    color: black;
+    padding: 60px 20px; /* Reduced padding */
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0; /* Removes extra space */
+}
+
+.about-section {
+    padding: 40px 20px; /* Reduced padding */
+    max-width: 900px;
+    margin: auto;
+}
+/* Add hover & click animation */
+.about-section .content {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.about-section .content:hover {
+    transform: scale(1.05); /* Slightly enlarges the box */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Click effect */
+.about-section .content:active {
+    transform: scale(0.95); /* Shrinks when clicked */
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.about-section h2 {
+    color: #ff6f61;
+
+    margin-bottom: 10px;
+}
+
+.about-section ol {
+    padding-left: 20px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #ff6f61;
+    color: white;
+    margin-top: 20px;
+}
