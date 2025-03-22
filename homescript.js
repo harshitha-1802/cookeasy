@@ -15,8 +15,7 @@ async function searchRecipe() {
 
     recipeContainer.innerHTML = "<p>Fetching recipes...</p>";
 
-    // 🔹 Updated API URL to use deployed backend instead of localhost
-    let apiUrl =`https://dummyjson.com/recipes/search?q=${query}`;
+    let apiUrl = `http://127.0.0.1:5000/recipes?ingredients=${query}`;
     console.log("Fetching from API:", apiUrl); // ✅ Check API URL
 
     try {
@@ -32,7 +31,7 @@ async function searchRecipe() {
 
         recipeContainer.innerHTML = "";
 
-        if (!data || data.length === 0) {
+        if (data.length === 0) {
             recipeContainer.innerHTML = "<p>No recipes found. Try different ingredients.</p>";
             return;
         }
@@ -72,3 +71,4 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(feature);
     });
 });
+
