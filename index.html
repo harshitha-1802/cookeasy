@@ -1,87 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Finder</title>
-    <link rel="stylesheet" href="homestyles.css">
-    <script src="homescript.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Recipe Finder</title>
+  <link rel="stylesheet" href="homestyles.css" />
+  <script src="homescript.js" defer></script>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="logo">Recipe Finder</div>
-        <ul class="nav-links">
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="#footer">Contact Us</a></li>
-            <li class="dropdown">
-                <a href="#">Accounts ▼</a>
-                <ul class="dropdown-menu">
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="signup.html">Signup</a></li>
-                </ul>
-            </li>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="logo">Recipe Finder</div>
+    <ul class="nav-links">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#footer">Contact Us</a></li>
+      <li class="dropdown">
+        <a href="#">Accounts ▼</a>
+        <ul class="dropdown-menu">
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">Signup</a></li>
         </ul>
-    </nav>
+      </li>
+    </ul>
+  </nav>
 
-    <!-- Search Section -->
-    <section class="search-section">
-        <div class="overlay">
-            <h1>Find Recipes by Ingredients</h1>
-            <input type="text" id="search-bar" placeholder="Enter ingredients...">
-            <button id="searchButton">Search</button>
-        </div>
-    </section>
+  <!-- Search + Filters -->
+  <section class="search-section">
+    <div class="overlay">
+      <h1>Find Recipes by Ingredients</h1>
+      <input type="text" id="search-bar" placeholder="Enter ingredients..." />
 
-    <!-- Recipe Results Section (Search Output) -->
-    <section id="recipeResults" class="recipe-results">
-        <h2>Search Results</h2>
-        <div class="recipe-container"></div>
-    </section>
+     
+        <button id="searchButton">Search</button>
+      </div>
+    </div>
+  </section>
 
-    <!-- Feature Sections (Restored All 3 Features) -->
-    <section class="feature-section">
-        <div class="feature">
-            <div class="text">
-                <h2>Healthy & Delicious</h2>
-                <p>Find recipes that balance taste and nutrition.</p>
-            </div>
-            <div class="image">
-                <img src="https://images.pexels.com/photos/1640771/pexels-photo-1640771.jpeg" alt="Healthy Food">
-            </div>
-        </div>
+  <!-- Results + Load More -->
+  <section id="recipeResults" class="recipe-results">
+    <h2>Search Results</h2>
+    <div class="recipe-container"></div>
+    <button id="loadMoreBtn" style="display:none;">Load More</button>
+  </section>
 
-        <div class="feature">
-            <div class="image">
-                <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" alt="Cooking in Kitchen">
-            </div>
-            <div class="text">
-                <h2>Quick & Easy</h2>
-                <p>Get recipes that are simple and fast to prepare.</p>
-            </div>
-        </div>
+  <!-- Features -->
+  <section class="feature-section">
+    <div class="feature"><div class="text"><h2>Healthy & Delicious</h2><p>Find recipes that balance taste and nutrition.</p></div><div class="image"><img src="https://images.pexels.com/photos/1640771/pexels-photo-1640771.jpeg" alt="Healthy Food"/></div></div>
+    <div class="feature"><div class="image"><img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" alt="Quick & Easy"/></div><div class="text"><h2>Quick & Easy</h2><p>Get recipes that are simple and fast to prepare.</p></div></div>
+    <div class="feature"><div class="text"><h2>Ingredient-Based Search</h2><p>Enter available ingredients and find matching recipes.</p></div><div class="image"><img src="https://plus.unsplash.com/premium_photo-1712820624934-cb9ccf72a51d" alt="Ingredients"/></div></div>
+  </section>
 
-        <div class="feature">
-            <div class="text">
-                <h2>Ingredient-Based Search</h2>
-                <p>Enter available ingredients and find matching recipes.</p>
-            </div>
-            <div class="image">
-                <img src="https://plus.unsplash.com/premium_photo-1712820624934-cb9ccf72a51d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cmVjaXBlJTIwZmluZGVyJTIwYmFja2dyb3VuZCUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D" alt="Recipe Ingredients">
-            </div>
-        </div>
-    </section>
+  <!-- Recipe Detail Modal -->
+<div id="recipeModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">×</span>
+        <h2 id="modalTitle"></h2>
+        <img id="modalImage" src="" alt="Recipe Image" />
+        <h3>Instructions</h3>
+        <div id="modalInstructions"></div>
+        <h3>Nutrition</h3>
+        <ul id="modalNutrition"></ul>
+    </div>
+</div>
+<!-- Chatbot Icon and Window -->
+<div id="chatbot-container">
+  <button id="chatbot-toggle">👨‍🍳</button>
+<div id="chatbot-tooltip" class="chatbot-tooltip">
+  Hi, this is chat assistant. How can I assist you?
+</div>
 
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="footer-container">
-            <h3>Contact Us</h3>
-            <p>Email: <a href="mailto:support@recipefinder.com">support@recipefinder.com</a></p>
-            <p>Phone: +1 234 567 890</p>
-            <p>Address: BVRIT COLLEGE</p>
-        </div>
-        <p class="footer-bottom">© 2025 Recipe Finder. All Rights Reserved.</p>
-    </footer>
+  <div id="chatbot-window" style="display: none;">
+    <div class="chatbot-header">
+      <h3>CookEasy Assistant</h3>
+      <button id="chatbot-close">×</button>
+    </div>
+    <div id="chat-messages"></div>
+    <div class="chatbot-input-container">
+      <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Ask about recipes, cooking tips..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="chatbot.css">
+<script src="chatbot.js"></script>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-container">
+      <h3>Contact Us</h3>
+      <p>Email: <a href="mailto:support@recipefinder.com">support@recipefinder.com</a></p>
+      <p>Phone: +1 234 567 890</p>
+      <p>Address: BVRIT COLLEGE</p>
+    </div>
+    <p class="footer-bottom">© 2025 Recipe Finder. All Rights Reserved.</p>
+  </footer>
+
+    <script>
+  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+  if (loggedInUser) {
+    const accountsDropdown = document.querySelector('.dropdown');
+    accountsDropdown.innerHTML = `
+      <a href="#">${loggedInUser.username} ▼</a>
+      <ul class="dropdown-menu">
+	<li><a href="meal.html" id="meal">Meal Planner</a></li>
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
+    `;
+
+    const logoutButton = document.getElementById('logout');
+    logoutButton?.addEventListener('click', () => {
+      localStorage.removeItem('loggedInUser');
+      window.location.reload();
+    });
+  }
+
+  // 🔁 Always apply dropdown toggle
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdown = document.querySelector('.dropdown');
+
+    dropdown.addEventListener('click', function (e) {
+      e.stopPropagation(); 
+      dropdown.classList.toggle('open');
+    });
+
+    window.addEventListener('click', function () {
+      dropdown.classList.remove('open');
+    });
+  });
+</script>
 </body>
 </html>

@@ -46,8 +46,7 @@ body {
 .nav-links a:hover, .nav-links .active {
     color: #f3efee;
 }
-
-/* Dropdown Menu */
+/* Dropdown Styling */
 .dropdown {
     position: relative;
 }
@@ -55,24 +54,30 @@ body {
 .dropdown-menu {
     display: none;
     position: absolute;
-    background: #f4f6f6;
-    list-style: none;
-    top: 30px;
+    top: 100%; /* Position below the parent */
     left: 0;
-    min-width: 100px;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
+    background-color: white;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .dropdown-menu li {
     padding: 10px;
-    color: #333;
+    text-align: left;
 }
 
-.dropdown-menu a {
-    color: white;
+.dropdown-menu li a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 /* Hero Section */
 

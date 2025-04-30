@@ -1,0 +1,322 @@
+#chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Toggle button styling */
+#chatbot-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#chatbot-toggle:hover {
+  background-color: #d35400;
+  transform: scale(1.05);
+}
+
+/* Chatbot window styling */
+#chatbot-window {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 350px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Chatbot header styling */
+.chatbot-header {
+  background-color: #e67e22;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+#chatbot-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Chat messages area */
+#chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Message styling */
+.user-message, .bot-message {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-radius: 18px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: #3498db;
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+  background-color: white;
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 5px;
+  border-left: 3px solid #e67e22;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Input area styling */
+.chatbot-input-container {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  background-color: white;
+}
+
+#chat-form {
+  display: flex;
+  gap: 10px;
+}
+
+#user-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+}
+
+#user-input:focus {
+  border-color: #e67e22;
+}
+
+#chat-form button {
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#chat-form button:hover {
+  background-color: #d35400;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  padding: 10px;
+  background-color: white;
+  border-radius: 18px;
+  width: fit-content;
+  margin-bottom: 15px;
+  align-self: flex-start;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #e67e22;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: typingAnimation 1.5s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes typingAnimation {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+/* Recipe container styling */
+.recipe-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.recipe-intro {
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.recipe-section {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.section-title, .info-title, .tips-title {
+  color: #e67e22;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #f8d9b8;
+}
+
+/* Ingredients styling */
+.ingredients-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.ingredient-item {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.ingredient-item:before {
+  content: "•";
+  color: #e67e22;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Instructions styling */
+.instructions-list {
+  counter-reset: step-counter;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.instruction-step {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 15px;
+  counter-increment: step-counter;
+}
+
+.instruction-step:before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  background-color: #e67e22;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Recipe info styling */
+.recipe-info {
+  background-color: #f9f3e0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 4px solid #e67e22;
+}
+
+.recipe-info p {
+  margin: 5px 0;
+}
+
+/* Tips styling */
+.recipe-tips {
+  background-color: #f0f8ff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 4px solid #3498db;
+}
+
+.tips-title {
+  color: #3498db;
+  border-bottom-color: #c4e3ff;
+}
+
+.tips-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.tip-item {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+/* Tooltip styling */
+#chatbot-tooltip {
+  position: absolute;
+  bottom: 80px; /* Adjust to position above the chatbot icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+#chatbot-tooltip.show {
+  display: block;
+  opacity: 1;
+}

@@ -1,250 +1,620 @@
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #edf6eb;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #edf6eb;
 }
 
 /* Navigation Bar */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #FF6B6B;
-    padding: 15px 30px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ff6f61;
+  padding: 15px 40px;
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
+  font-size: 24px;
+  font-weight: 600;
+  color : white;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
 .nav-links li {
-    margin: 0 15px;
-    position: relative;
+  color: black;
+  margin-left: 20px;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
 }
 
+.nav-links a:hover, .nav-links .active {
+  color: #f3efee;
+}
 /* Dropdown Styling */
 .dropdown {
-    position: relative;
+  position: relative;
 }
 
 .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%; /* Position below the parent */
-    left: 0;
-    background-color: white;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  display: none;
+  position: absolute;
+  top: 100%; /* Position below the parent */
+  left: 0;
+  background-color: white;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .dropdown-menu li {
-    padding: 10px;
-    text-align: left;
+  padding: 10px;
+  text-align: left;
 }
 
 .dropdown-menu li a {
-    text-decoration: none;
-    color: black;
-    display: block;
+  text-decoration: none;
+  color: black;
+  display: block;
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
+  display: block;
 }
+/* Show dropdown on click */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
 
 /* Search Section */
 .search-section {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('https://images.pexels.com/photos/1640776/pexels-photo-1640776.jpeg') no-repeat center/cover;
-    text-align: center;
-    color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('https://images.pexels.com/photos/1640776/pexels-photo-1640776.jpeg') no-repeat center/cover;
+  text-align: center;
+  color: white;
 }
 
 .overlay {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 40px;
-    border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 10px;
 }
 
-.overlay input {
-    padding: 10px;
-    width: 250px;
-    border: none;
-    border-radius: 5px;
+.overlay input,
+.overlay button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.filter-sort-container {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  justify-content: center;
+}
+
+.filter-sort-container select {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.filter-sort-container select:hover {
+  background-color: #f0f0f0;
 }
 
 .overlay button {
-    padding: 10px 15px;
-    background-color: #FF6B6B;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+  background-color: #FF6B6B;
+  color: white;
+  cursor: pointer;
 }
 
-/* Feature Sections */
+/* Feature Section */
 .feature-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+
+
+
+  display: block;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+/* When search results are shown */
+#recipeResults:not([style*="display: none"]) + .feature-section {
+  display: block; /* Keep feature section visible even when results are shown */
 }
 
 .feature {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%;
-    max-width: 1200px;
-    margin: 30px 0;
-    padding: 20px;
-    opacity: 01;
-    transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px 0;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
 }
 
-.feature .image {
-    width: 45%;
+.feature.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature .image,
+.feature .text {
+  width: 45%;
 }
 
 .feature img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .feature .text {
-    width: 45%;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 20px;
-    text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
 }
 
-/* Most Searched Recipes Section */
-.most-searched {
-    background-color: #f6f2e8;
-    color: white;
-    text-align: center;
-    padding: 50px 20px;
+/* Recipe Container Grid */
+.recipe-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-.most-searched h2 {
-    font-size: 32px;
-    margin-bottom: 40px;
-    color: #0f0e0e;
+/* Recipe Card */
+.recipe-card {
+    width: calc(33.33% - 30px); /* 3 cards per row with spacing */
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative; 
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
-
 .recipe-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    width: 80%;
-    margin: auto;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
 }
 
-.recipe-box {
-    background-color: #f6dcdc;
-    padding: 30px;
-    border-radius: 15px;
-    width: 40%;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: fadeInUp 1s ease-out forwards;
-}
-
-@media (max-width: 900px) {
-    .recipe-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .recipe-box {
-        width: 80%;
-    }
-}
-
-.recipe-box:nth-child(2) {
-    animation-delay: 0.5s;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.recipe-card {
-    text-align: center;
-    padding: 15px;
-    transition: transform 0.3s ease;
-}
 
 .recipe-card:hover {
-    transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .recipe-card img {
-    width: 100%;
-    height: 140px;
-    border-radius: 10px;
-    object-fit: cover;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .recipe-card h3 {
-    font-size: 18px;
-    margin: 10px 0;
-    color: rgb(14, 14, 14);
+  margin: 10px 0;
+  font-size: 1.2em;
+  color: #333;
 }
 
 .recipe-card p {
-    font-size: 20px;
-    color: #0f0e0e;
+  font-size: 0.9em;
+  color: #666;
+}
+/* Add this to your existing CSS */
+
+/* Heart Button Styling */
+.recipe-card {
+  position: relative; /* Needed for absolute positioning of heart */
+}
+
+.heart-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.heart-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.heart-btn.active {
+  background: #ff6b6b;
+  color: white;
+}
+
+
+.heart-btn i {
+  font-size: 16px;
+}
+
+/* Optional: Add this if you want the heart to appear on hover */
+/* .recipe-card:hover .heart-btn {
+  opacity: 1;
+} */
+/* Time Duration on Card */
+.time-duration {
+    position: relative;
+    margin: 10px 0;
+    background-color: #ffe0e0;
+    color: #b23b3b;
+    padding: 6px 14px 6px 30px; /* extra left padding for icon */
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    width: fit-content;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .time-duration::before {
+    content: '🕒';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+  }
+  
+  .recipe-card p:first-of-type {
+    position: relative;
+    margin: 8px 0;
+    background-color: #ffe0e0;
+    color: #b23b3b;
+    padding: 6px 14px 6px 30px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    width: fit-content;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recipe-card p:first-of-type::before {
+    content: '🕒';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+  }
+  
+
+/* Filters */
+.filters {
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.filters select,
+.filters button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Load More Button */
+#loadMoreBtn {
+  margin: 20px auto;
+  display: block;
+  background-color: #ff7043;
+  color: white;
+  font-weight: bold;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#loadMoreBtn:hover {
+  background-color: #ff5722;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Most Searched Recipes */
+.most-searched {
+  background-color: #f6f2e8;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.most-searched h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #0f0e0e;
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #FF6B6B;
-    color: white;
+  text-align: center;
+  padding: 20px;
+  background-color: #FF6B6B;
+  color: white;
+}
+/* Enhanced Modal Styling */
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Scroll Animation */
-.visible {
-    opacity: 0.5;
-    transform: translateY(0);
+.modal-content h2 {
+  color: #ff6f61;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ff6f61;
+}
+
+#modalImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 15px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin: 25px 0 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.modal-content h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100px;
+  height: 2px;
+  background: #ff6f61;
+}
+
+/* Instructions Styling */
+#modalInstructions {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+#modalInstructions ol {
+  counter-reset: step-counter;
+  padding-left: 0;
+  margin: 0;
+}
+
+#modalInstructions li {
+  position: relative;
+  padding: 15px 15px 15px 50px;
+  margin-bottom: 10px;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  list-style-type: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#modalInstructions li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#modalInstructions li::before {
+  counter-increment: step-counter;
+  content: counter(step-counter);
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25px;
+  height: 25px;
+  background: #ff6f61;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Nutrition Styling */
+#modalNutrition {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+#modalNutrition li {
+  background: linear-gradient(135deg, #fff5f5, #fff);
+  padding: 15px;
+  border-radius: 8px;
+  list-style: none;
+  box-shadow: 0 3px 10px rgba(255, 111, 97, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+#modalNutrition li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 111, 97, 0.2);
+}
+
+#modalNutrition li::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: #ff6f61;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  margin-bottom: 10px;
+}
+
+/* Specific icons for common nutrition items */
+#modalNutrition li:nth-child(1)::before {
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.522 4.82 3.889 6.115l-.78 2.77h2.178l.5-1.5h2.446l.5 1.5h2.178l-.78-2.77C19.478 14.935 21 12.672 21 10.115 21 6.185 16.97 3 12 3zm0 1c4.39 0 8 2.817 8 6.115 0 1.962-1.136 3.693-2.893 4.885h-1.723l.5 1.5h-1.768l-1-3H9.884l-1 3H7.116l.5-1.5H6.893C5.136 13.808 4 12.077 4 10.115 4 6.817 7.61 4 12 4z"/></svg>');
+}
+
+#modalNutrition li:nth-child(2)::before {
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-3.87 0-7 2.13-7 5 0 1.73.82 3.27 2.12 4.28l-.42 1.48h2.6l.5-1.5h1.6l.5 1.5h2.6l-.42-1.48C18.18 11.27 19 9.73 19 8c0-2.87-3.13-5-7-5zm0 1c3.44 0 6 1.86 6 4 0 1.23-.58 2.32-1.5 3l.5 1.5h-1.6l-.5-1.5h-2.8l-.5 1.5H7.5l.5-1.5C6.58 10.32 6 9.23 6 8c0-2.14 2.56-4 6-4z"/></svg>');
+}
+
+#modalNutrition li:nth-child(3)::before {
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.522 4.82 3.889 6.115l-.78 2.77h2.178l.5-1.5h2.446l.5 1.5h2.178l-.78-2.77C19.478 14.935 21 12.672 21 10.115 21 6.185 16.97 3 12 3zm0 1c4.39 0 8 2.817 8 6.115 0 1.962-1.136 3.693-2.893 4.885h-1.723l.5 1.5h-1.768l-1-3H9.884l-1 3H7.116l.5-1.5H6.893C5.136 13.808 4 12.077 4 10.115 4 6.817 7.61 4 12 4z"/></svg>');
+}
+
+#modalNutrition li:nth-child(4)::before {
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-3.87 0-7 2.13-7 5 0 1.73.82 3.27 2.12 4.28l-.42 1.48h2.6l.5-1.5h1.6l.5 1.5h2.6l-.42-1.48C18.18 11.27 19 9.73 19 8c0-2.87-3.13-5-7-5zm0 1c3.44 0 6 1.86 6 4 0 1.23-.58 2.32-1.5 3l.5 1.5h-1.6l-.5-1.5h-2.8l-.5 1.5H7.5l.5-1.5C6.58 10.32 6 9.23 6 8c0-2.14 2.56-4 6-4z"/></svg>');
+}
+
+#modalNutrition li:nth-child(5)::before {
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-3.87 0-7 2.13-7 5 0 1.73.82 3.27 2.12 4.28l-.42 1.48h2.6l.5-1.5h1.6l.5 1.5h2.6l-.42-1.48C18.18 11.27 19 9.73 19 8c0-2.87-3.13-5-7-5zm0 1c3.44 0 6 1.86 6 4 0 1.23-.58 2.32-1.5 3l.5 1.5h-1.6l-.5-1.5h-2.8l-.5 1.5H7.5l.5-1.5C6.58 10.32 6 9.23 6 8c0-2.14 2.56-4 6-4z"/></svg>');
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 20px 15px;
+  }
+  
+  #modalNutrition {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  #modalInstructions li {
+    padding: 12px 12px 12px 40px;
+  }
+}
+/* Responsive Grids */
+@media (max-width: 900px) {
+  .feature {
+    flex-direction: column;
+    align-items: center;
+  }
+  .feature .image,
+  .feature .text {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .recipe-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background: #ff6f61;
+    padding: 0;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .recipe-container {
+    grid-template-columns: 1fr;
+  }
 }
